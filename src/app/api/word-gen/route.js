@@ -1,4 +1,4 @@
-import OpenAI from 'openai'
+import OpenAI from 'opena'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
