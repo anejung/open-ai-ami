@@ -1,5 +1,6 @@
 'use client';
 import { useState } from "react";
+import Image from 'next/image'; // Place the import here at the top
 
 export default function Home() {
   const [poem, setPoem] = useState('');
@@ -22,15 +23,16 @@ export default function Home() {
 
   return (
     <form onSubmit={generateMessage} className="flex flex-col gap-6 p-4">
-      {/* Replacing 🌳 with the marimo image */}
+      {/* Use your <h1> code here */}
       <h1 className="text-3xl font-bold text-center flex justify-center items-center">
-        Talk with 
-        <img
+        Talk with
+        <Image
           src="/marimo.png"
           alt="Marimo"
-          width={100}
-          height={100}
+          width={52}
+          height={52}
           className="inline-block ml-2"
+          priority
         />
       </h1>
       <input
@@ -48,7 +50,7 @@ export default function Home() {
         {poem ? (
           <div className="bg-[var(--background)] p-6 rounded-md no-shadow">
             <h2 className="text-xl font-bold">
-              Marimo's Message
+              Marimo&apos;s Message
             </h2>
             <p className="mt-2">{poem}</p>
           </div>
