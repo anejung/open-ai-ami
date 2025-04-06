@@ -25,7 +25,7 @@ export default function Home() {
     <form onSubmit={generateMessage} className="flex flex-col gap-6 p-4">
       {/* Use your <h1> code here */}
       <h1 className="text-3xl font-bold text-center flex justify-center items-center">
-        Talk with the cutest plant!🫧
+        Talk with the cutest plant!
       </h1>
       <input
         type="text"
@@ -36,7 +36,7 @@ export default function Home() {
         className="w-full"
       />
       <button type="submit" disabled={loading} className="w-full">
-        {loading ? 'Thinking...' : 'Get message from Mr. Marimo💌'}
+        {loading ? 'Thinking...' : 'Get message from Mr. Marimo'}
       </button>
       <div className="mt-6">
         {poem ? (
