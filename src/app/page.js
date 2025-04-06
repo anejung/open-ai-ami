@@ -25,15 +25,7 @@ export default function Home() {
     <form onSubmit={generateMessage} className="flex flex-col gap-6 p-4">
       {/* Use your <h1> code here */}
       <h1 className="text-3xl font-bold text-center flex justify-center items-center">
-        Talk with
-        <Image
-          src="/marimo.png"
-          alt="Marimo"
-          width={52}
-          height={52}
-          className="inline-block ml-2"
-          priority
-        />
+        Talk with the cutest plant!🫧
       </h1>
       <input
         type="text"
