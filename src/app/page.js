@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <form onSubmit={generateFlashcards} className="flex flex-col gap-4 p-4">
       <h1 className="text-2xl font-bold">Create Flash Card</h1>
-      <input type="text" placeholder="กรอกหัวข้อ Flash Card"
+      <input type="text" placeholder="talk to marimo"
         name="topic"
         onChange={(event) => setTopic(event.target.value)}
         value={topic}
