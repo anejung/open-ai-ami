@@ -37,7 +37,7 @@ export default function Home() {
       </h1>
       <input
         type="text"
-        placeholder="How's your land life?"
+        placeholder="How&apos;s your land life?"
         name="topic"
         onChange={(event) => setTopic(event.target.value)}
         value={topic}
