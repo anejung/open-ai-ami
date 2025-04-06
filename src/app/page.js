@@ -23,28 +23,35 @@ export default function Home() {
   };
 
   return (
-    <form onSubmit={generatePoem} className="flex flex-col gap-4 p-4">
-      <h1 className="text-2xl font-bold">Generate Marimo Poem</h1>
-      <input 
-        type="text" 
-        placeholder="Enter a theme for marimo's adventure" 
-        name="topic"
-        onChange={(event) => setTopic(event.target.value)}
-        value={topic}
-      />
-      <button type="submit" disabled={loading}>
-        {loading ? 'Loading..' : 'Create Poem'}
-      </button>
-      <div className="mt-4">
+    <div className="flex flex-col items-center gap-6">
+      <h1 className="text-3xl font-bold text-[var(--foreground)]">
+        Create Your Marimo Poem
+      </h1>
+      <form onSubmit={generatePoem} className="w-full max-w-lg space-y-4">
+        <input
+          type="text"
+          placeholder="Enter a calming theme for marimo"
+          name="topic"
+          onChange={(event) => setTopic(event.target.value)}
+          value={topic}
+          className="w-full"
+        />
+        <button type="submit" disabled={loading} className="w-full">
+          {loading ? 'Creating...' : 'Generate Poem'}
+        </button>
+      </form>
+      <div className="w-full max-w-lg mt-6">
         {poem ? (
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h2 className="text-lg font-bold">Marimo's Whimsical Poem</h2>
-            <p>{poem}</p>
+          <div className="bg-[var(--accent)]/10 p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-bold text-[var(--foreground)]">
+              Marimo's Whimsical Poem
+            </h2>
+            <p className="text-[var(--foreground)]">{poem}</p>
           </div>
         ) : (
-          <p>Waiting for your creative input!</p>
+          <p className="text-[var(--foreground)]">Let your creativity flow!</p>
         )}
       </div>
-    </form>
+    </div>
   );
 }
