@@ -22,8 +22,16 @@ export default function Home() {
 
   return (
     <form onSubmit={generateMessage} className="flex flex-col gap-6 p-4">
-      <h1 className="text-3xl font-bold text-center">
-        Talk with Marimo
+      {/* Replacing 🌳 with the marimo image */}
+      <h1 className="text-3xl font-bold text-center flex justify-center items-center">
+        Talk with 
+        <img
+          src="/marimo.png"
+          alt="Marimo"
+          width={100}
+          height={100}
+          className="inline-block ml-2"
+        />
       </h1>
       <input
         type="text"
@@ -34,7 +42,7 @@ export default function Home() {
         className="w-full"
       />
       <button type="submit" disabled={loading} className="w-full">
-        {loading ? 'Thinking...' : 'Get message from Marimo'}
+        {loading ? 'Thinking...' : 'Get message from Mr. Marimo💌'}
       </button>
       <div className="mt-6">
         {poem ? (
