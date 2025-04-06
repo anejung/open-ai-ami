@@ -7,14 +7,20 @@ const openai = new OpenAI({
 export async function POST(request) {
   const data = await request.json()
   const topic = data.topic
-  const prompt = `Create set of words for 5 flashcards from this topic: ${topic}
-  Format as: 
-  1:word1
-  2:word2
-  3:word3
-  4:word4
-  5:word5
-  `
+  const prompt = `write a heartwarming poem about marimo moss ball: ${topic}
+
+  Example format:
+- Marimo as curious adventurer
+- Marimo dreaming of underwater forests
+- Marimo's love for gentle waves`;
+
+  // Format as: 
+  // 1:word1
+  // 2:word2
+  // 3:word3
+  // 4:word4
+  // 5:word5
+  // `
 
   const completion = await openai.chat.completions.create({
     model: 'gpt-4o-mini',
@@ -24,17 +30,17 @@ export async function POST(request) {
         content: prompt
       }
     ]
-  })
-  const aiContent = completion.choices[0].message.content
+  });
+  const aiContent = completion.choices[0].message.content;
 
-  const finalFlashcardArray = aiContent.split('\n').map((item) => {
-    const id = item.split(':')[0]
-    const word = item.split(':')[1]
-    return {
-      id: id,
-      word: word
-    }
-  })
+  // const finalFlashcardArray = aiContent.split('\n').map((item) => {
+  //   const id = item.split(':')[0]
+  //   const word = item.split(':')[1]
+  //   return {
+  //     id: id,
+  //     word: word
+  //   }
+  // })
 
-  return Response.json(finalFlashcardArray)
+  return Response.json({ poem: aiContent});
 }
