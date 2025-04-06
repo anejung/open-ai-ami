@@ -1,35 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f5f5; /* Soft light gray */
-  --foreground: #3a3a3a; /* Gentle dark gray for text */
-  --accent: #94d1c2; /* Calm pastel green */
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1a1a1a; /* Deep gray for dark mode */
-    --foreground: #d4d4d4; /* Soft white text for dark mode */
-    --accent: #76a7a0; /* Muted green */
-  }
+  --background: rgba(254, 241, 188, 1); /* Soft pastel yellow */
+  --foreground: rgba(130, 89, 82, 1);  /* Earthy text color */
+  --button: rgba(175, 204, 226, 1);    /* Pastel blue for buttons */
 }
 
 body {
   @apply bg-[var(--background)] text-[var(--foreground)] font-sans antialiased;
+  font-family: 'Concert One', sans-serif;
 }
 
-input,
-select {
-  @apply border-[var(--accent)] bg-white/50 px-3 py-2 text-[var(--foreground)] rounded-md shadow-sm;
+input {
+  @apply border-[var(--foreground)] bg-transparent px-3 py-2 rounded-md focus:outline-none;
+  border-width: 1px;
+  font-family: 'Concert One', sans-serif;
 }
 
 button {
-  @apply bg-[var(--accent)] text-white font-bold px-4 py-2 rounded-lg shadow-lg hover:bg-[var(--accent)]/80;
+  background-color: var(--button);
+  @apply text-[var(--foreground)] font-bold uppercase px-4 py-2 rounded-md;
+  font-family: 'Concert One', sans-serif;
+  border: none;
 }
+
+h1 {
+  font-family: 'Playwrite México Guides', serif;
+}
+
+h2, p {
+  font-family: 'Concert One', sans-serif;
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px;
+}
+

@@ -6,15 +6,13 @@ export default function Home() {
   const [topic, setTopic] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const generatePoem = async (event) => {
+  const generateMessage = async (event) => {
     event.preventDefault();
     setLoading(true);
     const response = await fetch('/api/word-gen', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        topic: topic,
-      })
+      body: JSON.stringify({ topic }),
     });
 
     const poemData = await response.json();
@@ -23,35 +21,31 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <h1 className="text-3xl font-bold text-[var(--foreground)]">
-        Create Your Marimo Poem
+    <form onSubmit={generateMessage} className="flex flex-col gap-6 p-4">
+      <h1 className="text-3xl font-bold text-center">
+        Talk with Marimo
       </h1>
-      <form onSubmit={generatePoem} className="w-full max-w-lg space-y-4">
-        <input
-          type="text"
-          placeholder="Enter a calming theme for marimo"
-          name="topic"
-          onChange={(event) => setTopic(event.target.value)}
-          value={topic}
-          className="w-full"
-        />
-        <button type="submit" disabled={loading} className="w-full">
-          {loading ? 'Creating...' : 'Generate Poem'}
-        </button>
-      </form>
-      <div className="w-full max-w-lg mt-6">
+      <input
+        type="text"
+        placeholder="How's your land life?"
+        name="topic"
+        onChange={(event) => setTopic(event.target.value)}
+        value={topic}
+        className="w-full"
+      />
+      <button type="submit" disabled={loading} className="w-full">
+        {loading ? 'Thinking...' : 'Get message from Marimo'}
+      </button>
+      <div className="mt-6">
         {poem ? (
-          <div className="bg-[var(--accent)]/10 p-4 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold text-[var(--foreground)]">
-              Marimo's Whimsical Poem
+          <div className="bg-[var(--background)] p-6 rounded-md no-shadow">
+            <h2 className="text-xl font-bold">
+              Marimo's Message
             </h2>
-            <p className="text-[var(--foreground)]">{poem}</p>
+            <p className="mt-2">{poem}</p>
           </div>
-        ) : (
-          <p className="text-[var(--foreground)]">Let your creativity flow!</p>
-        )}
+        ) : null}
       </div>
-    </div>
+    </form>
   );
 }
